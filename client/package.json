@@ -26,12 +26,13 @@
     "ngx-toastr": "^11.3.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
+    "uuid": "^8.3.2",
     "xng-breadcrumb": "^5.0.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.18",
-    "@angular/cli": "~12.2.18",
+    "@angular-devkit/build-angular": "^12.2.13",
+    "@angular/cli": "^12.2.18",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
