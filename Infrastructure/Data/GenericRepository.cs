@@ -7,20 +7,20 @@ namespace Infrastructure.Data
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly StoreContext __context;
-        public GenericRepository(StoreContext _context)
+        private readonly StoreContext _context;
+        public GenericRepository(StoreContext context)
         {
-            __context = _context;
+           _context = context;
         }
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await __context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            return await __context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
@@ -40,8 +40,23 @@ namespace Infrastructure.Data
 
         
         private IQueryable<T> ApplySpecification(ISpecification<T> spec){
-            return SpecificationEvaluator<T>.GetQuery(__context.Set<T>().AsQueryable(), spec);
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
         }
 
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
     }
 }
