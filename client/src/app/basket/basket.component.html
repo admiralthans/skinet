@@ -19,7 +19,7 @@
         <div class="row">
           <div class="col-6 offset-6">
             <app-order-totals
-              *ngIf="basketTotals$ | async"
+              *ngIf="(basketTotals$ | async)"
               [shippingPrice]="(basketTotals$ | async).shipping"
               [subtotal]="(basketTotals$ | async).subtotal"
               [total]="(basketTotals$ | async).total"

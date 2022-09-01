@@ -1,6 +1,7 @@
 using API.Extensions;
 using API.Helpers;
 using API.Middleware;
+using AutoMapper;
 using Infrastructure.Data;
 using Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,9 +41,11 @@ namespace API
             services.AddApplicationServices();
             services.AddIdentityServices(_config);
             services.AddSwaggerDocumentation();
-            services.AddCors(opt =>{
-                opt.AddPolicy("CorsPolicy", policy => {
-                    policy.AllowAnyHeader().AllowAnyHeader().WithOrigins("https://localhost:4200");
+            services.AddCors(opt => 
+            {
+                opt.AddPolicy("CorsPolicy", policy => 
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
         }

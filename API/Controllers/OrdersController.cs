@@ -39,7 +39,7 @@ public class OrdersController : BaseApiController
 
             var orders = await _orderService.GetOrdersForUserAsync(email);
 
-            return Ok(_mapper.Map<IReadOnlyList<Order>,IReadOnlyList<OrderToReturnDto>>(orders));
+            return Ok(_mapper.Map<IReadOnlyList<Order>, IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
         [HttpGet("{id}")]

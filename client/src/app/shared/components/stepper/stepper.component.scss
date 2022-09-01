@@ -8,7 +8,7 @@ button.nav-link {
   }
 
   &.active:hover {
-    color: white;
+    color: white;    
   }
 
   &:active {
@@ -17,5 +17,9 @@ button.nav-link {
 
   &.active:focus {
     outline: none;
+  }
+
+  &:disabled:not(.active){
+    color: #333;
   }
 }

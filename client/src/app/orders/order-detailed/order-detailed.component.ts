@@ -25,6 +25,7 @@ export class OrderDetailedComponent implements OnInit {
       .getOrderDetailed(+this.route.snapshot.paramMap.get('id'))
       .subscribe(
         (order: IOrder) => {
+          debugger;
           this.order = order;
           this.breadcrumbService.set(
             '@OrderDetailed',

@@ -27,10 +27,10 @@
   <div
     class="invalid-feedback"
     *ngIf="
-      controlDir &&
+      (controlDir &&
       controlDir.control &&
       !controlDir.control.valid &&
-      controlDir.control.touched
+      controlDir.control.touched)
     "
   >
     <span *ngIf="controlDir.control.errors?.required"
@@ -43,10 +43,10 @@
   <div
     class="invalid-feedback d-block"
     *ngIf="
-      controlDir &&
+      (controlDir &&
       controlDir.control &&
       !controlDir.control.valid &&
-      controlDir.control.dirty
+      controlDir.control.dirty)
     "
   >
     <span *ngIf="controlDir.control.errors?.emailExists">Email is in use</span>
