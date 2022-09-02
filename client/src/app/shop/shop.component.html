@@ -7,7 +7,9 @@
           class="custom-select mb-4"
           (change)="onSortSelected($event.target.value)"
         >
-          <option *ngFor="let sort of sortOptions" [value]="sort.value">
+        <option *ngFor="let sort of sortOptions" 
+        [selected]="shopParams.sort === sort.value"
+        [value]="sort.value">
             {{ sort.name }}
           </option>
         </select>
@@ -52,7 +54,7 @@
             placeholder="Search"
             type="text"
             #search
-            (keyup)="onSearch()"
+            (keyup.enter)="onSearch()"
           />
           <button class="btn btn-outline-primary my-2" (click)="onSearch()">
             Search
@@ -71,6 +73,7 @@
         <app-pager
           [pageSize]="shopParams.pageSize"
           [totalCount]="totalCount"
+          [pageNumber]="shopParams.pageNumber"
           (pageChanged)="onPageChanged($event)"
         ></app-pager>
       </div>
